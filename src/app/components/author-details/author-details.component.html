@@ -1,0 +1,86 @@
+<!-- <div *ngIf="author">
+  <h2>{{author.lastName | uppercase}} Details: </h2>
+  <div><span>First Name: </span>{{author.firstName}}</div>
+  <div><span>Middle Name: </span>{{author.middleName}}</div>
+  <div><span>Last Name: </span>{{author.lastName}}</div>
+  <div><span>Date of birth: </span>{{author.dob}}</div>
+  <div><span>Book: </span>{{author.book.title}}</div>
+</div> -->
+<div class="row">
+
+
+  <mat-card class="example-card col-6" *ngIf="author">
+    <mat-card-header>
+      <mat-card-title>{{author.lastName | uppercase}}</mat-card-title>
+      <mat-card-subtitle>Details:</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li>
+          First Name: {{author.firstName}}
+        </li>
+        <li>
+          Middle Name: {{author.middleName}}
+        </li>
+        <li>
+          Last Name: {{author.lastName}}
+        </li>
+        <li>
+          Date of birth: {{author.dob}}
+        </li>
+        <li>
+          Book: {{author.book.title}}
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button>Add</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="example-card col-6" *ngIf="author">
+    <mat-card-header>
+      <mat-card-title>{{author.lastName | uppercase}}</mat-card-title>
+      <mat-card-subtitle>Edit:</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li>
+          <label>First Name:
+            <input [(ngModel)]="author.firstName" placeholder="First Name">
+          </label>
+        </li>
+        <li>
+          <label>Middle Name:
+            <input [(ngModel)]="author.middleName" placeholder="Middle Name">
+          </label>
+        </li>
+        <li>
+          <label>Last Name:
+            <input [(ngModel)]="author.lastName" placeholder="Last Name">
+          </label>
+        </li>
+        <li>
+          <label>Date of birth:
+            <input [(ngModel)]="author.dob" placeholder="Date of birth">
+          </label>
+        </li>
+        <li>
+          <label>Book:
+            <input [(ngModel)]="author.book.title" placeholder="Book">
+          </label>
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="save()">save</button>
+      <button (click)="goBack()">go back</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- <div *ngIf="author">
+  <label>name:
+    <input [(ngModel)]="author.firstName" placeholder="name">
+  </label>
+</div> -->

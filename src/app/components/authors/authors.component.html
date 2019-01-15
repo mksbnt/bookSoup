@@ -1,0 +1,54 @@
+<!-- <h2>My Authors</h2>
+
+<div>
+  <label>Author name:
+    <input #authorName />
+  </label> -->
+  
+  <!-- (click) passes input value to add() and then clears the input -->
+  
+  <!-- <button (click)="add(authorName.value); authorName.value=''">
+    add
+  </button>
+</div> -->
+
+
+
+<div class="row">
+  <mat-card class="example-card col-6">
+    <mat-card-header>
+      <mat-card-title>My Authors</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul class="authors">
+        <li *ngFor="let author of authors">
+          {{author.lastName}}
+          <button title="edit author" routerLink="/author_detail/{{author.id}}">Edit</button>
+          <button title="delete author" (click)="delete(author)">Delete</button>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="example-card col-6">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>Add Author</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <ul class="authors">
+        <li>
+          <label>Author last name:
+            <input #authorLastName />
+          </label>
+        </li>
+      </ul>
+    </mat-card-content>
+    <button (click)="add(authorLastName.value); authorLastName.value=''">
+      add
+    </button>
+  </mat-card>
+
+</div>
