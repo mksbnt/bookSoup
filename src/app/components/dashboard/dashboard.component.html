@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-2">
   <div class="col-6">
     <mat-card class="example-card">
       <mat-card-header>
@@ -7,40 +7,28 @@
       <mat-card-content>
         <ul *ngFor="let author of authors">
           <li>
-            {{author.lastName}}
-            <button routerLink="/author_detail/{{author.id}}">Details</button>
+            <a routerLink="/author_detail/{{author.id}}">
+              {{author.lastName}}
+            </a>
           </li>
         </ul>
       </mat-card-content>
     </mat-card>
   </div>
   <div class="col-6">
-      <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Top Books</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <ul *ngFor="let book of books">
-              <li>
-                {{book.title}}
-                <button routerLink="/book_detail/{{book.id}}">Details</button>
-              </li>
-            </ul>
-          </mat-card-content>
-        </mat-card>
-     
-        <!-- <h3>Top Books</h3>
-      <div class="grid grid-pad">
-        <a *ngFor="let book of books" class="col-1-4">
-          <div class="module hero">
-            <h4>{{book.title}}</h4>
-          </div>
-        </a>
-      </div> -->
-      
-    <!-- <app-books></app-books> -->
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Top Books</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul *ngFor="let book of books">
+          <li>
+            <a routerLink="/book_detail/{{book.id}}">
+              {{book.title}}
+            </a>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
-
-<app-author-search></app-author-search>
-<app-book-search></app-book-search>

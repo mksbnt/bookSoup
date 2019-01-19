@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyAaqSojW2KvAYKU2kKJ38fmSG2lqDQ2nqE",
-    authDomain: "booksoup-532ce.firebaseapp.com",
-    databaseURL: "https://booksoup-532ce.firebaseio.com",
-    projectId: "booksoup-532ce",
-    storageBucket: "booksoup-532ce.appspot.com",
-    messagingSenderId: "104083824907"
-  }
+  // firebase: {
+  //   apiKey: "AIzaSyAaqSojW2KvAYKU2kKJ38fmSG2lqDQ2nqE",
+  //   authDomain: "booksoup-532ce.firebaseapp.com",
+  //   databaseURL: "https://booksoup-532ce.firebaseio.com",
+  //   projectId: "booksoup-532ce",
+  //   storageBucket: "booksoup-532ce.appspot.com",
+  //   messagingSenderId: "104083824907"
+  // }
 };
 
 /*

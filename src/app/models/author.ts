@@ -18,9 +18,11 @@ export class Author {
   lastName: string;
   dob: Date;
   book: 
-    {
-      title: string;
-      pages: number;
-      genre: string;
-    }
+    [
+      {
+        title: string;
+        pages: number;
+        genre: string;
+      }
+    ]
 }

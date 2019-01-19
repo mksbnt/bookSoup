@@ -1,21 +1,58 @@
 <div *ngIf="book">
-    <h2>{{book.title | uppercase}} Details</h2>
-    <div><span>id: </span>{{book.id}}</div>
-    <div><span>title: </span>{{book.title}}</div>
-    <div><span>pages: </span>{{book.pages}}</div>
-    <div><span>genre: </span>{{book.genre}}</div>
-    <div>
-      <label>title:
-        <input [(ngModel)]="book.title" placeholder="title">
-      </label>
-      <label>pages:
-        <input [(ngModel)]="book.pages" placeholder="title">
-      </label>
-      <label>genre:
-        <input [(ngModel)]="book.genre" placeholder="title">
-      </label>
+  <div class="row mb-2">
+    <div class="col-6">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{book.title | uppercase}}</mat-card-title>
+          <mat-card-subtitle>Details:</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li>
+              Title: {{book.title}};
+            </li>
+            <li>
+              Genre: {{book.genre}};
+            </li>
+            <li>
+              Pages: {{book.pages}};
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="col-6">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{book.title | uppercase}}</mat-card-title>
+          <mat-card-subtitle>Edit:</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li>
+              <label>Title:
+                <input [(ngModel)]="book.title" placeholder="title">
+              </label>
+            </li>
+            <li>
+              <label>Genre:
+                <input [(ngModel)]="book.genre" placeholder="title">
+              </label>
+            </li>
+            <li>
+              <label>Pages:
+                <input [(ngModel)]="book.pages" placeholder="title">
+              </label>
+            </li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="save()">save</button>
+          <button (click)="goBack()">go back</button>
+          <button class="delete" title="delete book" (click)="delete(book)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
-
-  <button (click)="save()">save</button>
-  <button (click)="goBack()">go back</button>
+</div>

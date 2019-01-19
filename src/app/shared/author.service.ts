@@ -47,7 +47,7 @@ export class AuthorService {
   getAuthor(id: number): Observable<Author> {
     const url = `${this.authorsUrl}/${id}`;
     return this.http.get<Author>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(_ => this.log(`fetched author id=${id}`)),
       catchError(this.handleError<Author>(`getAuthor id=${id}`))
     );
   }
@@ -58,7 +58,7 @@ export class AuthorService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Author[]>(`${this.authorsUrl}/?name=${term}`).pipe(
+    return this.http.get<Author[]>(`${this.authorsUrl}/?lastName=${term}`).pipe(
       tap(_ => this.log(`found heroes matching "${term}"`)),
       catchError(this.handleError<Author[]>('searchHeroes', []))
     );

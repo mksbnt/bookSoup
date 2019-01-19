@@ -5,6 +5,9 @@ import { Location } from '@angular/common';
 import { Author } from '../../models/author';
 import { AuthorService } from '../../shared/author.service';
 
+import { Book } from '../../models/book';
+import { BookService } from '../../shared/book.service';
+
 @Component({
   selector: 'app-author-details',
   templateUrl: './author-details.component.html',
@@ -12,15 +15,24 @@ import { AuthorService } from '../../shared/author.service';
 })
 export class AuthorDetailsComponent implements OnInit {
 
+  books: Book[];
+
   @Input() author: Author;
   constructor(
     private route: ActivatedRoute,
+    private location: Location,
     private authorService: AuthorService,
-    private location: Location
+    private bookService: BookService
   ) { }
 
   ngOnInit(): void {
     this.getAuthor();
+    this.getBooks();
+  }
+
+  getBooks(): void {
+    this.bookService.getBooks()
+    .subscribe(books => this.books = books); // this.books = books.slice(0, 5)
   }
 
   goBack(): void {
@@ -36,5 +48,10 @@ export class AuthorDetailsComponent implements OnInit {
   save(): void {
     this.authorService.updateAuthor(this.author)
       .subscribe(() => this.goBack());
+  }
+
+  delete(): void {
+    this.authorService.deleteAuthor(this.author)
+    .subscribe(() => this.goBack());
   }
 }

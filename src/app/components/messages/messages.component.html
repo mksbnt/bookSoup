@@ -1,8 +1,25 @@
 <div *ngIf="messageService.messages.length">
 
-  <h2>Messages</h2>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Messages:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul *ngFor='let message of messageService.messages'>
+        <li>
+          {{message}};
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="messageService.clear()">clear</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+  <!-- <h2>Messages</h2>
   <button class="clear"
           (click)="messageService.clear()">clear</button>
-  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div> -->
 
 </div>

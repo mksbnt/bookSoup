@@ -33,8 +33,14 @@ export class BookDetailsComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
+  delete(): void {
+    this.bookService.deleteBook(this.book)
+    .subscribe(() => this.goBack());
+  }
+
   goBack(): void {
     this.location.back();
   }
+  
 
 }

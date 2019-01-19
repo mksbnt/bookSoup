@@ -1,13 +1,17 @@
 <div id="search-component">
-  <h4>Author Search</h4>
-
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-
-  <ul class="search-result">
-    <li *ngFor="let author of authors$ | async" >
-      <a routerLink="/detail/{{author.id}}">
-        {{author.name}}
-      </a>
-    </li>
-  </ul>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Author Search</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+      <ul class="search-result">
+        <li *ngFor="let author of authors$ | async">
+          <a routerLink="/author_detail/{{author.id}}">
+            {{author.lastName}}
+          </a>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -17,31 +17,36 @@ export class InMemoryDataService implements InMemoryDbService {
         middleName: 'Wilhelm',
         lastName: 'Nietzsche',
         dob: ('1844-10-15'),
-        book: { title: 'The Birth of Tragedy', pages: 100, genre: 'philosophy' }
+        book: 
+          { title: 'The Birth of Tragedy', pages: 100, genre: 'philosophy' }
       }
     ];
 
     const books = [
       {
         id: 11,
+        author: 'Nietzshe',
         title: 'On the Genealogy of Morality',
         pages: 200,
         genre: 'philosophy'
       },
       {
         id: 12,
+        author: 'Nietzshe',
         title: 'The Case of Wagner',
         pages: 300,
         genre: 'philosophy'
       },
       {
         id: 13,
+        author: 'Nietzshe',
         title: 'Twilight of the Idols',
         pages: 400,
         genre: 'philosophy'
       },
       {
         id: 14,
+        author: 'Nietzshe',
         title: 'The Antichrist',
         pages: 300,
         genre: 'philosophy'
@@ -51,42 +56,11 @@ export class InMemoryDataService implements InMemoryDbService {
     return { authors, books };
   };
 
-  // createDB() {
-  //   const books = [
-  //     {
-  //       id: 11,
-  //       title: 'On the Genealogy of Morality',
-  //       pages: 200,
-  //       genre: 'philosophy'
-  //     },
-  //     {
-  //       id: 12,
-  //       title: 'The Case of Wagner',
-  //       pages: 300,
-  //       genre: 'philosophy'
-  //     },
-  //     {
-  //       id: 13,
-  //       title: 'Twilight of the Idols',
-  //       pages: 400,
-  //       genre: 'philosophy'
-  //     },
-  //     {
-  //       id: 14,
-  //       title: 'The Antichrist',
-  //       pages: 300,
-  //       genre: 'philosophy'
-  //     }
-  //   ];
-
-  //   return { books };
-  // };
-
   // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is empty,
+  // If the authors array is empty,
   // the method below returns the initial number (11).
-  // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  // if the authors array is not empty, the method below returns the highest
+  // author id + 1.
   genAuthorId(authors: Author[]): number {
     return authors.length > 0 ? Math.max(...authors.map(author => author.id)) + 1 : 11;
   }
