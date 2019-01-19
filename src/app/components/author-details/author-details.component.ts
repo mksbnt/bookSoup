@@ -7,6 +7,7 @@ import { AuthorService } from '../../shared/author.service';
 
 import { Book } from '../../models/book';
 import { BookService } from '../../shared/book.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-author-details',
@@ -16,6 +17,7 @@ import { BookService } from '../../shared/book.service';
 export class AuthorDetailsComponent implements OnInit {
 
   books: Book[];
+  book: Book;
 
   @Input() author: Author;
   constructor(
@@ -31,8 +33,8 @@ export class AuthorDetailsComponent implements OnInit {
   }
 
   getBooks(): void {
-    this.bookService.getBooks()
-    .subscribe(books => this.books = books); // this.books = books.slice(0, 5)
+    this.bookService.getBooks() //.pipe(filter(b => this.book.author === this.author.lastName))
+      .subscribe(books => this.books = books);
   }
 
   goBack(): void {
@@ -52,6 +54,6 @@ export class AuthorDetailsComponent implements OnInit {
 
   delete(): void {
     this.authorService.deleteAuthor(this.author)
-    .subscribe(() => this.goBack());
+      .subscribe(() => this.goBack());
   }
 }
