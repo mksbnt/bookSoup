@@ -1,0 +1,17 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.example-button-row button {
+  width: 25%;
+}

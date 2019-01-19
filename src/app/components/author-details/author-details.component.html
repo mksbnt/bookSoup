@@ -20,7 +20,7 @@
             <li>
               Date of birth: {{author.dob}};
             </li>
-            <li> 
+            <li>
               <a routerLink="/books">
                 Books:
               </a>
@@ -43,38 +43,42 @@
           <mat-card-subtitle>Edit:</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <ul>
-            <li>
-              <label>First Name:
-                <input [(ngModel)]="author.firstName" placeholder="First Name">
-              </label>
-            </li>
-            <li>
-              <label>Middle Name:
-                <input [(ngModel)]="author.middleName" placeholder="Middle Name">
-              </label>
-            </li>
-            <li>
-              <label>Last Name:
-                <input [(ngModel)]="author.lastName" placeholder="Last Name">
-              </label>
-            </li>
-            <li>
-              <label>Date of birth:
-                <input [(ngModel)]="author.dob" placeholder="Date of birth">
-              </label>
-            </li>
-            <!-- <li>
-              <label>Book:
-                <input [(ngModel)]="author.book.title" placeholder="Book">
-              </label>
-            </li> -->
-          </ul>
+          <div class="example-container">
+            <mat-form-field>
+              <input [(ngModel)]="author.firstName" matInput placeholder="First name" [formControl]="firstName"
+                required>
+              <mat-error *ngIf="firstName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input [(ngModel)]="author.middleName" matInput placeholder="Middle name" [formControl]="middleName"
+                required>
+              <mat-error *ngIf="middleName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input [(ngModel)]="author.lastName" matInput placeholder="Last name" [formControl]="lastName" required>
+              <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input [(ngModel)]="author.dob" matInput placeholder="Date of birth" [formControl]="dob" required>
+              <mat-error *ngIf="dob.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <!-- <mat-form-field>
+              <input [(ngModel)]="author.dob" matInput [matDatepicker]="picker3" placeholder="Date of birth" [value]="author.dob">
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field> -->
+          </div>
         </mat-card-content>
         <mat-card-actions>
+          <!-- <button (click)="goBack()">go back</button>
           <button (click)="save()">save</button>
-          <button (click)="goBack()">go back</button>
-          <button title="delete author" (click)="delete()">Delete</button>
+          <button (click)="delete()">delete</button> -->
+
+          <div class="example-button-row">
+            <button (click)="goBack()" mat-flat-button color="primary"> Back </button>
+            <button (click)="save()" mat-flat-button color="accent"> Save </button>
+            <button (click)="delete()" mat-flat-button color="warn">Delete</button>
+          </div>
         </mat-card-actions>
       </mat-card>
     </div>
