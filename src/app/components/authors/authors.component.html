@@ -13,8 +13,10 @@
       <mat-card-content>
         <ul class="authors">
           <li *ngFor="let author of authors">
-            {{author.lastName}}
-            <button title="edit author" routerLink="/author_detail/{{author.id}}">Edit</button>
+              <a routerLink="/author_detail/{{author.id}}">
+                {{author.lastName}}
+              </a>
+            <!-- <button title="edit author" routerLink="/author_detail/{{author.id}}">Edit</button> -->
             <!-- <button title="delete author" (click)="delete(author)">Delete</button> -->
           </li>
         </ul>
