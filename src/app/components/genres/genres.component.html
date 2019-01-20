@@ -1,0 +1,36 @@
+<div class="row mb-2">
+  <div class="col-6">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>My Genres</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let genre of genres">
+            {{genre.name}}
+            <button title="delete genre" (click)="delete(genre)">Delete</button>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>New Genre</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="example-container">
+          <mat-form-field>
+            <input #genreNameInput matInput placeholder="Enter genre" [formControl]="genreName" required>
+            <mat-error *ngIf="genreName.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="addBtn" (click)="add(genreNameInput.value); genreNameInput.value=''" mat-flat-button color="primary">
+          Add </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

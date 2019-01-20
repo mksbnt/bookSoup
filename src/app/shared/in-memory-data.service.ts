@@ -1,7 +1,9 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Injectable } from '@angular/core';
+
 import { Author } from '../models/author';
 import { Book } from '../models/book';
-import { Injectable } from '@angular/core';
+import { Genre } from '../models/genre';
 
 
 @Injectable({
@@ -53,7 +55,22 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return { authors, books };
+    const genres = [
+      {
+        id:  11,
+        name: 'Philosophy'
+      },
+      {
+        id:  12,
+        name: 'Poetry'
+      },
+      {
+        id:  13,
+        name: 'Drama'
+      }
+    ];
+
+    return { authors, books, genres };
   };
 
   // Overrides the genId method to ensure that a hero always has an id.
@@ -67,5 +84,9 @@ export class InMemoryDataService implements InMemoryDbService {
 
   genBookId(books: Book[]): number {
     return books.length > 0 ? Math.max(...books.map(book => book.id)) + 1 : 11;
+  }
+
+  genGenreId(genres: Genre[]): number {
+    return genres.length > 0 ? Math.max(...genres.map(genre => genre.id)) + 1 : 11;
   }
 }

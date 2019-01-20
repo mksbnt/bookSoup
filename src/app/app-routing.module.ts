@@ -5,6 +5,7 @@ import { AuthorDetailsComponent } from './components/author-details/author-detai
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { GenresComponent } from './components/genres/genres.component'
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'book_detail/:id',
     component: BookDetailsComponent
+  },
+  {
+    path: 'genres',
+    component: GenresComponent
   }
 ];
 

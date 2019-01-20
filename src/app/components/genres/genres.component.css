@@ -1,12 +1,13 @@
-.newBook__input {
+.example-container {
     display: flex;
     flex-direction: column;
   }
   
-.newBook__input > * {
+  .example-container > * {
+    width: 100%;
+  }
+
+  .addBtn {
     width: 100%;
   }
   
-button {
-    width: 100%;
-  }

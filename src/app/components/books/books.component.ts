@@ -4,6 +4,9 @@ import { BookService } from '../../shared/book.service';
 
 import {FormControl, Validators} from '@angular/forms';
 
+import { Genre } from '../../models/genre';
+import { GenreService } from '../../shared/genre.service';
+
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -11,12 +14,20 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class BooksComponent implements OnInit {
 
+  genres: Genre[];
   books: Book[];
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+    private genreService: GenreService) { }
 
   ngOnInit() {
     this.getBooks();
+    this.getGenres();
+  }
+
+  getGenres(): void {
+    this.genreService.getGenres()
+      .subscribe(genres => this.genres = genres);
   }
 
   getBooks(): void {
@@ -24,10 +35,13 @@ export class BooksComponent implements OnInit {
       .subscribe(books => this.books = books);
   }
 
-  add(title: string): void {
+  selectedGanre: string;
+  
+  add(title: string, genre: string ): void {
     title = title.trim();
-    if (!title) { return; }
-    this.bookService.addBook({ title } as Book)
+    this.selectedGanre = genre;
+    if (!title || !genre) { return; }
+    this.bookService.addBook({ title, genre } as Book)
       .subscribe(book => {
         this.books.push(book);
       });
@@ -44,4 +58,6 @@ export class BooksComponent implements OnInit {
     return this.bookTitle.hasError('required') ? 'You must enter a value' :
       '';
   }
+
+  genreControl = new FormControl('', [Validators.required]);
 }

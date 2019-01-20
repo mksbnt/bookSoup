@@ -40,10 +40,19 @@
               <input matInput placeholder="Author" [(ngModel)]="book.author" [formControl]="author" required>
               <mat-error *ngIf="author.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput placeholder="Genre" [(ngModel)]="book.genre" [formControl]="genre" required>
               <mat-error *ngIf="genre.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field> -->
+
+            <mat-form-field>
+              <mat-select placeholder="Genre">
+                <mat-option *ngFor="let genre of genres" [value]="genre.id">
+                  {{genre.name}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
+
             <mat-form-field>
               <input matInput placeholder="Pages" [(ngModel)]="book.pages" [formControl]="pages" required>
               <mat-error *ngIf="pages.invalid">{{getErrorMessage()}}</mat-error>

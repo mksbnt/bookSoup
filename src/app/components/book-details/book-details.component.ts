@@ -7,21 +7,32 @@ import { BookService } from '../../shared/book.service';
 
 import { FormControl, Validators } from '@angular/forms';
 
+import { Genre } from '../../models/genre';
+import { GenreService } from '../../shared/genre.service';
+
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
+  genres: Genre[];
   @Input() book: Book;
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
+    private genreService: GenreService,
     private location: Location
   ) { }
 
   ngOnInit(): void {
     this.getBook();
+    this.getGenres();
+  }
+
+  getGenres(): void {
+    this.genreService.getGenres()
+      .subscribe(genres => this.genres = genres);
   }
 
   getBook(): void {

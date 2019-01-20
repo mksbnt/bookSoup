@@ -27,15 +27,36 @@
         <mat-card-title>New Book</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div class="booksComponent--newBook__input">
+        <div class="newBook__input">
           <mat-form-field>
             <input #bookTitleInput matInput placeholder="Enter title" [formControl]="bookTitle" required>
             <mat-error *ngIf="bookTitle.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
+          <mat-form-field>
+              <mat-select #bookGanreSelect placeholder="Select genre" [(ngModel)]="selectedGenre" name="genre" [formControl]="genreControl" required>
+                  <mat-option>--</mat-option>
+                <mat-option *ngFor="let genre of genres" [value]="genre.name">
+                  {{genre.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="genreControl.hasError('required')">Please choose a genre</mat-error>
+            </mat-form-field>
+            <!-- <p> Selected ganre: {{selectedGenre}} </p> -->
+            <!-- <mat-form-field>
+                <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let animal of animals" [value]="animal">
+                    {{animal.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+                <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+              </mat-form-field> -->
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="add(bookTitleInput.value); bookTitleInput.value=''" mat-flat-button color="primary"> Add </button>
+        <button (click)="add(bookTitleInput.value, bookGanreSelect.value); bookTitleInput.value=''; bookGanreSelect.value=''" mat-flat-button color="primary"> Add
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -27,6 +27,7 @@ import { MaterialModule } from './material';
 import { BooksComponent } from './components/books/books.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
+import { GenresComponent } from './components/genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
     AuthorSearchComponent,
     BooksComponent,
     BookDetailsComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
