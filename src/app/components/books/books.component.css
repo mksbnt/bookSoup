@@ -1,0 +1,12 @@
+.booksComponent--newBook__input {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.booksComponent--newBook__input > * {
+    width: 100%;
+  }
+  
+button {
+    width: 100%;
+  }

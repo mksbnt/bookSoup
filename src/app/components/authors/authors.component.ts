@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Author } from '../../models/author';
 import { AuthorService } from '../../shared/author.service';
 
+import {FormControl, Validators} from '@angular/forms';
+
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -34,5 +36,12 @@ export class AuthorsComponent implements OnInit {
   delete(author: Author): void {
     this.authors = this.authors.filter(a => a !== author);
     this.authorService.deleteAuthor(author).subscribe();
+  }
+
+  lastName = new FormControl('', [Validators.required]);
+
+  getErrorMessage() {
+    return this.lastName.hasError('required') ? 'You must enter a value' :
+      '';
   }
 }

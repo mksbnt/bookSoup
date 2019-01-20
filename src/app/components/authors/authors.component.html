@@ -13,9 +13,9 @@
       <mat-card-content>
         <ul class="authors">
           <li *ngFor="let author of authors">
-              <a routerLink="/author_detail/{{author.id}}">
-                {{author.lastName}}
-              </a>
+            <a routerLink="/author_detail/{{author.id}}">
+              {{author.lastName}}
+            </a>
             <!-- <button title="edit author" routerLink="/author_detail/{{author.id}}">Edit</button> -->
             <!-- <button title="delete author" (click)="delete(author)">Delete</button> -->
           </li>
@@ -26,20 +26,19 @@
   <div class="col-6">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Add Author</mat-card-title>
+        <mat-card-title>New Author</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <ul>
-          <li>
-            <label>Last name:
-              <input #authorLastName />
-            </label>
-          </li>
-        </ul>
+        <div class="example-container">
+          <mat-form-field>
+            <input #authorLastName matInput placeholder="Enter last name" [formControl]="lastName" required>
+            <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
       </mat-card-content>
-      <button (click)="add(authorLastName.value); authorLastName.value=''">
-        add
-      </button>
+      <mat-card-actions>
+        <button (click)="add(authorLastName.value); authorLastName.value=''" mat-flat-button color="primary"> Add </button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

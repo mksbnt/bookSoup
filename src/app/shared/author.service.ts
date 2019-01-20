@@ -80,7 +80,7 @@ export class AuthorService {
     const url = `${this.authorsUrl}/${id}`;
 
     return this.http.delete<Author>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(_ => this.log(`deleted author id=${id}`)),
       catchError(this.handleError<Author>('deleteAuthor'))
     );
   }
