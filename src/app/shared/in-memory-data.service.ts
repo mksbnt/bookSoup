@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
         middleName: 'Wilhelm',
         lastName: 'Nietzsche',
         dob: ('1844-10-15'),
-        book: 
+        book:
           { title: 'The Birth of Tragedy', pages: 100, genre: 'philosophy' }
       }
     ];
@@ -57,36 +57,27 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const genres = [
       {
-        id:  11,
+        id: 11,
         name: 'Philosophy'
       },
       {
-        id:  12,
+        id: 12,
         name: 'Poetry'
       },
       {
-        id:  13,
+        id: 13,
         name: 'Drama'
       }
     ];
 
     return { authors, books, genres };
   };
-
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the authors array is empty,
+  // Overrides the genId method to ensure that a Author | Book | Genre always has an id.
+  // If the authors | books | genres array is empty,
   // the method below returns the initial number (11).
-  // if the authors array is not empty, the method below returns the highest
-  // author id + 1.
-  genAuthorId(authors: Author[]): number {
-    return authors.length > 0 ? Math.max(...authors.map(author => author.id)) + 1 : 11;
-  }
-
-  genBookId(books: Book[]): number {
-    return books.length > 0 ? Math.max(...books.map(book => book.id)) + 1 : 11;
-  }
-
-  genGenreId(genres: Genre[]): number {
-    return genres.length > 0 ? Math.max(...genres.map(genre => genre.id)) + 1 : 11;
+  // if the  authors | books | genres array is not empty, the method below returns the highest
+  // author | book | genre id + 1.
+  genId<T extends Author | Book | Genre>(myTable: T[]): number {
+    return myTable.length > 0 ? Math.max(...myTable.map(t => t.id)) + 1 : 11;
   }
 }
