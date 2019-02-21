@@ -54,7 +54,7 @@ import { GenresComponent } from './components/genres/genres.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
   ],
   providers: [
     BookService,

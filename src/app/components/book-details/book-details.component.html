@@ -3,31 +3,21 @@
     <div class="col-6">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{book.title | uppercase}}</mat-card-title>
           <mat-card-subtitle>Details:</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <ul>
-            <li>
-              Title: {{book.title}};
-            </li>
-            <li>
-              Author: {{book.author}};
-            </li>
-            <li>
-              Genre: {{book.genre}};
-            </li>
-            <li>
-              Pages: {{book.pages}};
-            </li>
-          </ul>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Title: {{book.title}}</mat-list-item>
+            <mat-list-item role="listitem">Author: {{book.author}}</mat-list-item>
+            <mat-list-item role="listitem">Genre: {{book.genre.name}}</mat-list-item>
+            <mat-list-item role="listitem">Pages: {{book.pages}}</mat-list-item>
+          </mat-list>
         </mat-card-content>
       </mat-card>
     </div>
     <div class="col-6">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{book.title | uppercase}}</mat-card-title>
           <mat-card-subtitle>Edit:</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -40,19 +30,13 @@
               <input matInput placeholder="Author" [(ngModel)]="book.author" [formControl]="author" required>
               <mat-error *ngIf="author.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
-            <!-- <mat-form-field>
-              <input matInput placeholder="Genre" [(ngModel)]="book.genre" [formControl]="genre" required>
-              <mat-error *ngIf="genre.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field> -->
-
             <mat-form-field>
-              <mat-select placeholder="Genre">
-                <mat-option *ngFor="let genre of genres" [value]="genre.id">
+              <mat-select placeholder="Genre"  [(ngModel)]="book.genre.name">
+                <mat-option *ngFor="let genre of genres" [value]="genre.name">
                   {{genre.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-
             <mat-form-field>
               <input matInput placeholder="Pages" [(ngModel)]="book.pages" [formControl]="pages" required>
               <mat-error *ngIf="pages.invalid">{{getErrorMessage()}}</mat-error>
@@ -61,9 +45,9 @@
         </mat-card-content>
         <mat-card-actions>
           <div class="example-button-row">
-            <button (click)="goBack()" mat-flat-button color="primary">Back</button>
-            <button (click)="save()" mat-flat-button color="accent">Save</button>
-            <button (click)="delete(book)" mat-flat-button color="warn">Delete</button>
+            <button (click)="goBack()" mat-flat-button color="primary"><mat-icon aria-label="Back">arrow_back</mat-icon></button>
+            <button (click)="save(book)" mat-flat-button color="primary"><mat-icon aria-label="Save">save</mat-icon></button>
+            <button (click)="delete(book)" mat-flat-button color="primary"><mat-icon aria-label="Delete">delete</mat-icon></button>
           </div>
         </mat-card-actions>
       </mat-card>

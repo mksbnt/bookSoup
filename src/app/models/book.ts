@@ -4,5 +4,8 @@ export class Book {
 
     title: string;
     pages: number;
-    genre: string; //  - Жанр (текст, обязательное из списка допустимых значений)
+    genre: {
+      id: number;
+      name: string;
+    }// string; //  - Жанр (текст, обязательное из списка допустимых значений)
   }

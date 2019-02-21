@@ -19,8 +19,18 @@ export class InMemoryDataService implements InMemoryDbService {
         middleName: 'Wilhelm',
         lastName: 'Nietzsche',
         dob: ('1844-10-15'),
-        book:
-          { title: 'The Birth of Tragedy', pages: 100, genre: 'philosophy' }
+        books: [
+          {
+            id: 11,
+            author: 'Nietzshe',
+            title: 'On the Genealogy of Morality',
+            pages: 200,
+            genre: {
+              id: 11,
+              name: 'Philosophy'
+            }
+          }
+        ]
       }
     ];
 
@@ -30,28 +40,40 @@ export class InMemoryDataService implements InMemoryDbService {
         author: 'Nietzshe',
         title: 'On the Genealogy of Morality',
         pages: 200,
-        genre: 'philosophy'
+        genre: {
+          id: 11,
+          name: 'Philosophy'
+        }
       },
       {
         id: 12,
         author: 'Nietzshe',
         title: 'The Case of Wagner',
         pages: 300,
-        genre: 'philosophy'
+        genre: {
+          id: 11,
+          name: 'Philosophy'
+        }
       },
       {
         id: 13,
         author: 'Nietzshe',
         title: 'Twilight of the Idols',
         pages: 400,
-        genre: 'philosophy'
+        genre: {
+          id: 11,
+          name: 'Philosophy'
+        }
       },
       {
         id: 14,
         author: 'Nietzshe',
         title: 'The Antichrist',
         pages: 300,
-        genre: 'philosophy'
+        genre: {
+          id: 11,
+          name: 'Philosophy'
+        }
       }
     ];
 

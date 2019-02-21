@@ -35,13 +35,18 @@ export class BooksComponent implements OnInit {
       .subscribe(books => this.books = books);
   }
 
-  selectedGanre: string;
+  selectedGanre: { id: number; name: string;};
+
+  // NOW
   
-  add(title: string, genre: string ): void {
+  add(title: string, genre: { id: number; name: string; }, author: string, pages: number): void {
     title = title.trim();
     this.selectedGanre = genre;
-    if (!title || !genre) { return; }
-    this.bookService.addBook({ title, genre } as Book)
+    //genre = this.selectedGanre;
+    author = author.trim();
+    pages = pages;
+    if (!title || !genre || !author || !pages) { return; }
+    this.bookService.addBook({ title, genre, author, pages } as Book)
       .subscribe(book => {
         this.books.push(book);
       });
@@ -53,9 +58,13 @@ export class BooksComponent implements OnInit {
   }
 
   bookTitle = new FormControl('', [Validators.required]);
+  bookAuthor = new FormControl('', [Validators.required]);
+  bookPages = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     return this.bookTitle.hasError('required') ? 'You must enter a value' :
+    this.bookAuthor.hasError('required') ? 'You must enter a value' :
+    this.bookPages.hasError('required') ? 'You must enter a value' :
       '';
   }
 

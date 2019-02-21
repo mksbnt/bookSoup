@@ -5,12 +5,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
-// import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
-  imports: [MatButtonModule, MatCheckboxModule ,MatMenuModule, MatIconModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatSelectModule],
-  exports: [MatButtonModule, MatCheckboxModule ,MatMenuModule, MatIconModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatSelectModule],
+  imports: [MatButtonModule, MatCheckboxModule ,MatMenuModule, MatIconModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatSelectModule, MatListModule, MatNativeDateModule, MatAutocompleteModule],
+  exports: [MatButtonModule, MatCheckboxModule ,MatMenuModule, MatIconModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatSelectModule, MatListModule, MatNativeDateModule, MatAutocompleteModule],
 })
+
 export class MaterialModule { }

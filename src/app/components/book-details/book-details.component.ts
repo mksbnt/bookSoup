@@ -32,22 +32,23 @@ export class BookDetailsComponent implements OnInit {
 
   getGenres(): void {
     this.genreService.getGenres()
-      .subscribe(genres => this.genres = genres);
+      .subscribe(genres => {this.genres = genres; console.log(genres)});
   }
 
   getBook(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.bookService.getBook(id)
-      .subscribe(book => this.book = book);
+      .subscribe(book => {this.book = book; console.log(this.book)});
   }
 
-  save(): void {
-    this.bookService.updateBook(this.book)
+  save(book:any): void {
+    console.log(book);
+    this.bookService.updateBook(book)
       .subscribe(() => this.goBack());
   }
 
-  delete(): void {
-    this.bookService.deleteBook(this.book)
+  delete(book:any): void {
+    this.bookService.deleteBook(book)
       .subscribe(() => this.goBack());
   }
 
@@ -68,6 +69,7 @@ export class BookDetailsComponent implements OnInit {
             '';
   }
 
+  // selected = this.book.genre;
 }
 
 

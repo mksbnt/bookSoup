@@ -38,13 +38,11 @@ export class GenresComponent implements OnInit {
     this.genreService.deleteGenre(genre).subscribe();
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+
   genreName = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        this.genreName.hasError('required') ? 'You must enter a value' :
-          '';
+    return this.genreName.hasError('required') ? 'Please, enter genre name' :
+      '';
   }
 }

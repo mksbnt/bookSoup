@@ -1,12 +1,12 @@
 .newBook__input {
     display: flex;
     flex-direction: column;
-  }
+}
   
 .newBook__input > * {
     width: 100%;
-  }
+}
   
-button {
-    width: 100%;
-  }
+.btn--save{
+  width: 100%;
+}

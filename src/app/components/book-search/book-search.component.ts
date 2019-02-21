@@ -36,4 +36,5 @@ export class BookSearchComponent implements OnInit {
       switchMap((term: string) => this.bookService.searchBooks(term)),
     );
   }
+
 }

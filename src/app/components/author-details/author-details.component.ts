@@ -7,8 +7,6 @@ import { AuthorService } from '../../shared/author.service';
 
 import { Book } from '../../models/book';
 import { BookService } from '../../shared/book.service';
-import { filter } from 'rxjs/operators';
-
 
 import { FormControl, Validators } from '@angular/forms';
 
@@ -20,7 +18,6 @@ import { FormControl, Validators } from '@angular/forms';
 export class AuthorDetailsComponent implements OnInit {
 
   books: Book[];
-  book: Book;
 
   @Input()
   author: Author;
@@ -67,6 +64,7 @@ export class AuthorDetailsComponent implements OnInit {
   middleName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
   dob = new FormControl('', [Validators.required]);
+  booksList = new FormControl();
 
   getErrorMessage() {
     return this.firstName.hasError('required') ? 'You must enter a value' :
@@ -76,6 +74,4 @@ export class AuthorDetailsComponent implements OnInit {
             '';
   }
 
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
 }

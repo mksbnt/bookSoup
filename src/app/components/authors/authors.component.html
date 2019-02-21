@@ -3,7 +3,6 @@
     <app-author-search></app-author-search>
   </div>
 </div>
-
 <div class="row mb-2">
   <div class="col-6">
     <mat-card>
@@ -11,15 +10,14 @@
         <mat-card-title>My Authors</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <ul class="authors">
-          <li *ngFor="let author of authors">
-            <a routerLink="/author_detail/{{author.id}}">
-              {{author.lastName}}
-            </a>
-            <!-- <button title="edit author" routerLink="/author_detail/{{author.id}}">Edit</button> -->
-            <!-- <button title="delete author" (click)="delete(author)">Delete</button> -->
-          </li>
-        </ul>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let author of authors">
+            <a matLine routerLink="/author_detail/{{author.id}}">{{author.lastName}}</a>
+            <button mat-icon-button>
+              <mat-icon (click)="delete(author)" aria-label="Delete author">delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
       </mat-card-content>
     </mat-card>
   </div>
@@ -31,13 +29,36 @@
       <mat-card-content>
         <div class="example-container">
           <mat-form-field>
+            <input #authorFirstName matInput placeholder="Enter first name" [formControl]="firstName" required>
+            <mat-error *ngIf="firstName.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input #authorMiddleName matInput placeholder="Enter middle name" [formControl]="middleName" required>
+            <mat-error *ngIf="middleName.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
             <input #authorLastName matInput placeholder="Enter last name" [formControl]="lastName" required>
             <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [formControl]="date" [matDatepicker]="authorDOB" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="authorDOB"></mat-datepicker-toggle>
+            <mat-datepicker #authorDOB></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select #authorBookSelect placeholder="Books" [(ngModel)]="selectedBooks" [formControl]="authorBooks"
+              multiple>
+              <mat-option *ngFor="let book of books" [value]="book">{{book.title}}</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="add(authorLastName.value); authorLastName.value=''" mat-flat-button color="primary"> Add </button>
+        <button class="btn--add"
+          (click)="add(authorFirstName.value, authorMiddleName.value, authorLastName.value, authorDOB.valueOF, authorBookSelect.value); authorFirstName.value=''; authorMiddleName.value=''; authorLastName.value=''; authorDOB.valueOF=''; authorBookSelect.value=''; "
+          mat-flat-button color="primary">
+          <mat-icon aria-label="Add">save</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

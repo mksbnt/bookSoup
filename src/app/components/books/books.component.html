@@ -10,14 +10,14 @@
         <mat-card-title>My Books</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <ul>
-          <li *ngFor="let book of books">
-            <a routerLink="/book_detail/{{book.id}}">
-              {{book.title}}
-            </a>
-            <!-- <button class="delete" title="delete book" (click)="delete(book)">Delete</button> -->
-          </li>
-        </ul>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let book of books">
+            <a matLine routerLink="/book_detail/{{book.id}}">{{ book.title }}</a>
+            <button mat-icon-button>
+              <mat-icon (click)="delete(book)" aria-label="Delete book">delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
       </mat-card-content>
     </mat-card>
   </div>
@@ -33,29 +33,29 @@
             <mat-error *ngIf="bookTitle.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
           <mat-form-field>
-              <mat-select #bookGanreSelect placeholder="Select genre" [(ngModel)]="selectedGenre" name="genre" [formControl]="genreControl" required>
-                  <mat-option>--</mat-option>
-                <mat-option *ngFor="let genre of genres" [value]="genre.name">
-                  {{genre.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="genreControl.hasError('required')">Please choose a genre</mat-error>
-            </mat-form-field>
-            <!-- <p> Selected ganre: {{selectedGenre}} </p> -->
-            <!-- <mat-form-field>
-                <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
-                  <mat-option>--</mat-option>
-                  <mat-option *ngFor="let animal of animals" [value]="animal">
-                    {{animal.name}}
-                  </mat-option>
-                </mat-select>
-                <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
-                <mat-hint>{{animalControl.value?.sound}}</mat-hint>
-              </mat-form-field> -->
+            <input #bookAuthorInput matInput placeholder="Enter author name" [formControl]="bookAuthor" required>
+            <mat-error *ngIf="bookAuthor.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input #bookPagesInput matInput placeholder="Enter number of pages" [formControl]="bookPages" required>
+            <mat-error *ngIf="bookPages.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select #bookGanreSelect placeholder="Select genre" [(ngModel)]="selectedGenre" name="genre"
+              [formControl]="genreControl" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let genre of genres" [value]="genre">
+                {{genre.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="genreControl.hasError('required')">Please choose a genre</mat-error>
+          </mat-form-field>
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="add(bookTitleInput.value, bookGanreSelect.value); bookTitleInput.value=''; bookGanreSelect.value=''" mat-flat-button color="primary"> Add
+        <button mat-flat-button color="primary" class="btn--save" (click)="add(bookTitleInput.value, bookGanreSelect.value, bookAuthorInput.value, bookPagesInput.value); 
+        bookTitleInput.value=''; bookGanreSelect.value=''; bookAuthorInput.value=''; bookPagesInput.value='';">
+          <mat-icon aria-label="Add">save</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>

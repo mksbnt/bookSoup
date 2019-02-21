@@ -2,18 +2,28 @@
   <mat-toolbar-row>
     <span>{{ title }}</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button routerLink="/dashboard">
-      <mat-icon aria-label="Dashboard" class="example-icon">dashboard</mat-icon>
+    
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <button mat-icon-button routerLink="/authors">
-      <mat-icon aria-label="Authors" class="example-icon">people</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="/books">
-      <mat-icon aria-label="Books" class="example-icon">collections_bookmark</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="/genres">
-      <mat-icon aria-label="Genres" class="example-icon">collections</mat-icon>
-    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </button>
+      <button mat-menu-item routerLink="/authors">
+        <mat-icon>people</mat-icon>
+        <span>Authors</span>
+      </button>
+      <button mat-menu-item routerLink="/books">
+        <mat-icon>collections_bookmark</mat-icon>
+        <span>Books</span>
+      </button>
+      <button mat-menu-item routerLink="/genres">
+        <mat-icon>collections</mat-icon>
+        <span>Genres</span>
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -21,5 +31,3 @@
   <router-outlet></router-outlet>
   <app-messages></app-messages>
 </div>
-
-<!-- <app-authors></app-authors> -->

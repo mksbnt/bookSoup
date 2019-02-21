@@ -3,43 +3,29 @@
     <div class="col-6">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{author.lastName | uppercase}}</mat-card-title>
           <mat-card-subtitle>Details:</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <ul>
-            <li>
-              First Name: {{author.firstName}};
-            </li>
-            <li>
-              Middle Name: {{author.middleName}};
-            </li>
-            <li>
-              Last Name: {{author.lastName}};
-            </li>
-            <li>
-              Date of birth: {{author.dob}};
-            </li>
-            <li>
-              <a routerLink="/books">
-                Books:
-              </a>
-              <ul *ngFor="let book of books">
-                <li>
-                  <a routerLink="/book_detail/{{book.id}}">
-                    {{book.title}};
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <mat-list role="list">
+            <mat-list-item role="listitem">First Name: {{author.firstName}}</mat-list-item>
+            <mat-list-item role="listitem">Middle Name: {{author.middleName}}</mat-list-item>
+            <mat-list-item role="listitem">Last Name: {{author.lastName}}</mat-list-item>
+            <mat-list-item role="listitem">Date of birth: {{author.dob | date}}</mat-list-item>
+          </mat-list>
+          <mat-nav-list>
+            <mat-list-item>
+              <a matLine routerLink="/books">Books:</a>
+            </mat-list-item>
+            <mat-list-item *ngFor="let book of author.books">
+              <a matLine routerLink="/book_detail/{{book.id}}">{{book.title}}</a>
+            </mat-list-item>
+          </mat-nav-list>
         </mat-card-content>
       </mat-card>
     </div>
     <div class="col-6">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{author.lastName | uppercase}}</mat-card-title>
           <mat-card-subtitle>Edit:</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -59,21 +45,29 @@
               <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input [(ngModel)]="author.dob" matInput placeholder="Date of birth" [formControl]="dob" required>
+              <input [(ngModel)]="author.dob" matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="dob.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
-            <!-- <mat-form-field>
-              <input [(ngModel)]="author.dob" matInput [matDatepicker]="picker3" placeholder="Date of birth" [value]="author.dob">
-              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-              <mat-datepicker #picker3></mat-datepicker>
-            </mat-form-field> -->
+            <mat-form-field>
+              <mat-select [(ngModel)]="author.books" placeholder="Select books" [formControl]="booksList" multiple>
+                <mat-option *ngFor="let book of books" [value]="book">{{book.title}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </mat-card-content>
         <mat-card-actions>
           <div class="example-button-row">
-            <button (click)="goBack()" mat-flat-button color="primary"> Back </button>
-            <button (click)="save()" mat-flat-button color="accent"> Save </button>
-            <button (click)="delete()" mat-flat-button color="warn">Delete</button>
+            <button (click)="goBack()" mat-flat-button color="primary">
+              <mat-icon aria-label="Back">arrow_back</mat-icon>
+            </button>
+            <button (click)="save()" mat-flat-button color="primary">
+              <mat-icon aria-label="Save">save</mat-icon>
+            </button>
+            <button (click)="delete()" mat-flat-button color="primary">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
           </div>
         </mat-card-actions>
       </mat-card>

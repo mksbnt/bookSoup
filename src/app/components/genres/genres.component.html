@@ -5,12 +5,15 @@
         <mat-card-title>My Genres</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <ul>
-          <li *ngFor="let genre of genres">
-            {{genre.name}}
-            <button title="delete genre" (click)="delete(genre)">Delete</button>
-          </li>
-        </ul>
+        <mat-list>
+          <mat-list-item *ngFor="let genre of genres">
+            <!-- <mat-icon matListIcon>image</mat-icon> -->
+            <h3 matLine> {{genre.name}} </h3>
+            <button mat-icon-button>
+              <mat-icon (click)="delete(genre)" aria-label="Delete genre">delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </div>
@@ -22,14 +25,16 @@
       <mat-card-content>
         <div class="example-container">
           <mat-form-field>
-            <input #genreNameInput matInput placeholder="Enter genre" [formControl]="genreName" required>
+            <input #genreNameInput matInput placeholder="Enter genre name" [formControl]="genreName" required>
             <mat-error *ngIf="genreName.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button class="addBtn" (click)="add(genreNameInput.value); genreNameInput.value=''" mat-flat-button color="primary">
-          Add </button>
+        <button class="addBtn" mat-flat-button color="primary"
+          (click)="add(genreNameInput.value); genreNameInput.value=''" mat-flat-button color="primary">
+          <mat-icon aria-label="Add">save</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
