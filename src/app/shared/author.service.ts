@@ -55,12 +55,12 @@ export class AuthorService {
   /* GET authors whose name contains search term */
   searchAuthors(term: string): Observable<Author[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty author array.
       return of([]);
     }
     return this.http.get<Author[]>(`${this.authorsUrl}/?lastName=${term}`).pipe(
-      tap(_ => this.log(`found heroes matching "${term}"`)),
-      catchError(this.handleError<Author[]>('searchHeroes', []))
+      tap(_ => this.log(`found authors matching "${term}"`)),
+      catchError(this.handleError<Author[]>('searchAuthors', []))
     );
   }
 
@@ -88,7 +88,7 @@ export class AuthorService {
   /** PUT: update the author on the server */
   updateAuthor(author: Author): Observable<any> {
     return this.http.put(this.authorsUrl, author, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${author.id}`)),
+      tap(_ => this.log(`updated author id=${author.id}`)),
       catchError(this.handleError<any>('updateAuthor'))
     );
   }
@@ -97,7 +97,6 @@ export class AuthorService {
   //  * Let the app continue.
   //  * @param operation - name of the operation that failed
   //  * @param result - optional value to return as the observable result
-
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -109,8 +108,8 @@ export class AuthorService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a AuthorService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`AuthorService: ${message}`);
   }
 }
