@@ -2,11 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../../models/book'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 import { BookService } from '../../shared/book.service';
-
 import { FormControl, Validators } from '@angular/forms';
-
 import { Genre } from '../../models/genre';
 import { GenreService } from '../../shared/genre.service';
 
@@ -15,6 +12,7 @@ import { GenreService } from '../../shared/genre.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
+
 export class BookDetailsComponent implements OnInit {
   genres: Genre[];
   @Input() book: Book;
@@ -32,13 +30,13 @@ export class BookDetailsComponent implements OnInit {
 
   getGenres(): void {
     this.genreService.getGenres()
-      .subscribe(genres => {this.genres = genres; console.log(genres)});
+      .subscribe(genres => {this.genres = genres;});
   }
 
   getBook(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.bookService.getBook(id)
-      .subscribe(book => {this.book = book; console.log(this.book)});
+      .subscribe(book => {this.book = book;});
   }
 
   save(book:any): void {
@@ -69,7 +67,6 @@ export class BookDetailsComponent implements OnInit {
             '';
   }
 
-  // selected = this.book.genre;
 }
 
 
