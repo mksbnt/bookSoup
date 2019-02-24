@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../shared/book.service';
 
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 import { Genre } from '../../models/genre';
 import { GenreService } from '../../shared/genre.service';
@@ -35,14 +35,11 @@ export class BooksComponent implements OnInit {
       .subscribe(books => this.books = books);
   }
 
-  selectedGanre: { id: number; name: string;};
+  selectedGanre: { id: number; name: string; };
 
-  // NOW
-  
   add(title: string, genre: { id: number; name: string; }, author: string, pages: number): void {
     title = title.trim();
     this.selectedGanre = genre;
-    //genre = this.selectedGanre;
     author = author.trim();
     pages = pages;
     if (!title || !genre || !author || !pages) { return; }
@@ -60,13 +57,15 @@ export class BooksComponent implements OnInit {
   bookTitle = new FormControl('', [Validators.required]);
   bookAuthor = new FormControl('', [Validators.required]);
   bookPages = new FormControl('', [Validators.required]);
-
-  getErrorMessage() {
-    return this.bookTitle.hasError('required') ? 'You must enter a value' :
-    this.bookAuthor.hasError('required') ? 'You must enter a value' :
-    this.bookPages.hasError('required') ? 'You must enter a value' :
-      '';
-  }
-
   genreControl = new FormControl('', [Validators.required]);
+
+  // the function does not work correctly
+  // getErrorMessage() { 
+  //   return this.bookTitle.hasError('required') ? 'Please enter a title' :
+  //     this.bookAuthor.hasError('required') ? 'You must enter a value' :
+  //       this.bookPages.hasError('required') ? 'You must enter a value' :
+  //         this.genreControl.hasError('required') ? 'Please choose a genre' :
+  //           '';
+  // }
+
 }

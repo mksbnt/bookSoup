@@ -3,9 +3,7 @@ import { Book } from '../models/book';
 import { Observable, of } from 'rxjs';
 import { MessageService } from '../shared/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-
-// import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { catchError, tap } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,8 +13,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BookService {
-  // booksCollection: AngularFirestoreCollection<Book>;
-  // books: Observable<Book[]>;
 
   private booksUrl = 'api/books';  // URL to web api
 
@@ -28,16 +24,7 @@ export class BookService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    // db: AngularFirestore
-    ) { 
-      // this.books = db.collection('books').valueChanges();
-    }
-
-
-  // getBooks(): Observable<Book[]> {
-  //   this.messageService.add('BookService: fetched books');
-  //   return of(BOOKS);
-  // }
+  ) { }
 
   /** GET books from the server */
   getBooks(): Observable<Book[]> {
@@ -61,12 +48,6 @@ export class BookService {
       return of(result as T);
     };
   }
-
-  // getBook(id: number): Observable<Book> {
-  //   // TODO: send the message _after_ fetching the book
-  //   this.messageService.add(`BookService: fetched book id=${id}`);
-  //   return of(BOOKS.find(book => book.id === id));
-  // }
 
   /** GET book by id. Will 404 if id not found */
   getBook(id: number): Observable<Book> {

@@ -30,25 +30,24 @@
         <div class="newBook__input">
           <mat-form-field>
             <input #bookTitleInput matInput placeholder="Enter title" [formControl]="bookTitle" required>
-            <mat-error *ngIf="bookTitle.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="bookTitle.hasError('required')">Please enter book title</mat-error>
           </mat-form-field>
           <mat-form-field>
             <input #bookAuthorInput matInput placeholder="Enter author name" [formControl]="bookAuthor" required>
-            <mat-error *ngIf="bookAuthor.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="bookTitle.hasError('required')">Please enter author name</mat-error>
           </mat-form-field>
           <mat-form-field>
             <input #bookPagesInput matInput placeholder="Enter number of pages" [formControl]="bookPages" required>
-            <mat-error *ngIf="bookPages.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="bookTitle.hasError('required')">Please enter the number of pages</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-select #bookGanreSelect placeholder="Select genre" [(ngModel)]="selectedGenre" name="genre"
               [formControl]="genreControl" required>
-              <mat-option>--</mat-option>
               <mat-option *ngFor="let genre of genres" [value]="genre">
                 {{genre.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="genreControl.hasError('required')">Please choose a genre</mat-error>
+            <mat-error *ngIf="genreControl.hasError('required')">Please select a genre</mat-error>
           </mat-form-field>
         </div>
       </mat-card-content>
