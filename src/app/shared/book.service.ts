@@ -85,7 +85,6 @@ export class BookService {
     );
   }
 
-
   /* GET books whose title contains search term */
   searchBooks(term: string): Observable<Book[]> {
     if (!term.trim()) {
